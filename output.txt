@@ -1,0 +1,251 @@
+n3-119-207:mshahmohammadian mahshid$ script output.txt
+Script started, output file is output.txt
+n3-119-207% ./hw2
+osh> ls
+CS543 Homework 2.docx hw2                   out.txt
+Makefile              hw2.c                 output.txt
+Readme.txt            hw2.o                 script.sh
+osh> pwd &
+child process is running in parallel
+osh> usage: pwd [-L | -P]
+ls
+CS543 Homework 2.docx hw2                   out.txt
+Makefile              hw2.c                 output.txt
+Readme.txt            hw2.o                 script.sh
+osh> history
+   3) ls
+
+   2) pwd &
+
+   1) ls
+
+osh> !!
+history
+
+   4) history
+   3) ls
+
+   2) pwd &
+
+   1) ls
+
+osh> !3
+ls
+
+CS543 Homework 2.docx hw2                   out.txt
+Makefile              hw2.c                 output.txt
+Readme.txt            hw2.o                 script.sh
+osh> cd ..
+osh> cd mshahmohammadian
+osh> pwd
+/Users/mahshid/Desktop/mshahmohammadian
+osh> help
+Bellow is the list of defined commands:
+Note: like linux shell the commands are case sensitive.
+    exit  =>  exits the shell
+    cd path => changes the directory to path
+    history => lists the last 10 commands
+    !!  =>  shows the lastest command and executes it
+    !n  =>  shows the nth command in history, if it exists in 10 element sized buffer, and executes it
+    alias name "command"  =>  assigns an alias command called name for the command user defines
+    (Defined functions via alias are executed using the name that user assigns for alias.)
+    set path = (directories seperated with space) => sets directories in which shell searches for executables for the command
+    Commands found in the PATH (or set path directories) are also executable eg. ls, pwd, date, ...
+    set verbose on/off => turns on/off the diagnostics, so when searching for an executables in the directories, it prints the corresponding directories
+    bash file.sh => read a file with .sh extension, and run commands in the file line by line
+osh> alias dir "ls -al"
+osh> dir  
+total 256
+drwxr-xr-x  13 mahshid  staff    416 Feb  5 20:45 .
+drwx------@ 20 mahshid  staff    640 Feb  5 20:32 ..
+-rw-r--r--@  1 mahshid  staff   6148 Feb  5 20:45 .DS_Store
+-rw-r--r--@  1 mahshid  staff      0 Feb  5 20:45 .cs543rc
+-rw-r--r--@  1 mahshid  staff  19163 Feb  5 16:56 CS543 Homework 2.docx
+-rw-r--r--@  1 mahshid  staff     74 Feb  1 15:29 Makefile
+-rw-r--r--@  1 mahshid  staff    846 Feb  5 19:12 Readme.txt
+-rwxr-xr-x   1 mahshid  staff  23076 Feb  5 20:30 hw2
+-rw-r--r--@  1 mahshid  staff  31454 Feb  5 20:30 hw2.c
+-rw-r--r--   1 mahshid  staff  17184 Feb  5 20:30 hw2.o
+-rw-r--r--@  1 mahshid  staff   6993 Feb  5 20:44 out.txt
+-rw-r--r--   1 mahshid  staff   2151 Feb  5 20:46 output.txt
+-rw-r--r--@  1 mahshid  staff    103 Feb  5 20:44 script.sh
+osh> alias path "pwd"
+osh> path
+/Users/mahshid/Desktop/mshahmohammadian
+osh> dir
+total 256
+drwxr-xr-x  13 mahshid  staff    416 Feb  5 20:45 .
+drwx------@ 20 mahshid  staff    640 Feb  5 20:32 ..
+-rw-r--r--@  1 mahshid  staff   6148 Feb  5 20:45 .DS_Store
+-rw-r--r--@  1 mahshid  staff      0 Feb  5 20:45 .cs543rc
+-rw-r--r--@  1 mahshid  staff  19163 Feb  5 16:56 CS543 Homework 2.docx
+-rw-r--r--@  1 mahshid  staff     74 Feb  1 15:29 Makefile
+-rw-r--r--@  1 mahshid  staff    846 Feb  5 19:12 Readme.txt
+-rwxr-xr-x   1 mahshid  staff  23076 Feb  5 20:30 hw2
+-rw-r--r--@  1 mahshid  staff  31454 Feb  5 20:30 hw2.c
+-rw-r--r--   1 mahshid  staff  17184 Feb  5 20:30 hw2.o
+-rw-r--r--@  1 mahshid  staff   6993 Feb  5 20:44 out.txt
+-rw-r--r--   1 mahshid  staff   2151 Feb  5 20:46 output.txt
+-rw-r--r--@  1 mahshid  staff    103 Feb  5 20:44 script.sh
+osh> path
+/Users/mahshid/Desktop/mshahmohammadian
+osh> !!
+path
+
+/Users/mahshid/Desktop/mshahmohammadian
+osh> set path = (. /bin /usr/bin)
+osh> set verbose on
+Diagnostics off now
+osh> ls
+1) searching for the executable file in:
+./ls
+2) searching for the executable file in:
+/bin/ls
+CS543 Homework 2.docx hw2                   out.txt
+Makefile              hw2.c                 output.txt
+Readme.txt            hw2.o                 script.sh
+osh> cal
+1) searching for the executable file in:
+./cal
+2) searching for the executable file in:
+/bin/cal
+3) searching for the executable file in:
+/usr/bin/cal
+   February 2018      
+Su Mo Tu We Th Fr Sa  
+             1  2  3  
+ 4  5  6  7  8  9 10  
+11 12 13 14 15 16 17  
+18 19 20 21 22 23 24  
+25 26 27 28           
+                      
+osh> set path = (. /usr/bin)
+osh> ls
+1) searching for the executable file in:
+./ls
+2) searching for the executable file in:
+/usr/bin/ls
+Error: no such command, execution failed
+osh> set verbose off
+Diagnostics off now
+osh> history
+   24) set verbose off
+
+   23) ls
+
+   22) set path = (. /usr/bin)
+
+   21) cal
+
+   20) ls
+
+   19) set verbose on
+
+   18) set path = (. /bin /usr/bin)
+
+   17) !!
+
+   16) pwd
+   15) dir
+
+osh> !21
+cal
+
+   February 2018      
+Su Mo Tu We Th Fr Sa  
+             1  2  3  
+ 4  5  6  7  8  9 10  
+11 12 13 14 15 16 17  
+18 19 20 21 22 23 24  
+25 26 27 28           
+                      
+osh> pwd
+Error: no such command, execution failed
+osh> set path = (. /bin)
+osh> pwd
+/Users/mahshid/Desktop/mshahmohammadian
+osh> bash script.sh
++ echo 'Hello'
+
+'Hello'
++ ls
+
+CS543 Homework 2.docx hw2                   out.txt
+Makefile              hw2.c                 output.txt
+Readme.txt            hw2.o                 script.sh
++ help
+
+Bellow is the list of defined commands:
+Note: like linux shell the commands are case sensitive.
+    exit  =>  exits the shell
+    cd path => changes the directory to path
+    history => lists the last 10 commands
+    !!  =>  shows the lastest command and executes it
+    !n  =>  shows the nth command in history, if it exists in 10 element sized buffer, and executes it
+    alias name "command"  =>  assigns an alias command called name for the command user defines
+    (Defined functions via alias are executed using the name that user assigns for alias.)
+    set path = (directories seperated with space) => sets directories in which shell searches for executables for the command
+    Commands found in the PATH (or set path directories) are also executable eg. ls, pwd, date, ...
+    set verbose on/off => turns on/off the diagnostics, so when searching for an executables in the directories, it prints the corresponding directories
+    bash file.sh => read a file with .sh extension, and run commands in the file line by line
++ cd ..
+
++ cd mshahmohammadian
+
++ history
+
+   29) pwd
+
+   28) set path = (. /bin)
+
+   27) pwd
+
+   26) !21
+
+   25) history
+
+   24) set verbose off
+
+   23) ls
+
+   22) set path = (. /usr/bin)
+
+   21) cal
+   20) ls
+
++ alias dir "ls -al"
+
++ set path = (/usr/bin /bin .)
+
+osh> exit
+n3-119-207% exit
+
+Script done, output file is output.txt
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
